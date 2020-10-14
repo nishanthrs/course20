@@ -89,8 +89,9 @@ Classification predicts discrete labels, regression predicts continuous labels (
 
 **What is a validation set? What is a test set? Why do we need them?**  
 
-Validation set to ensure that model doesn't overfit to training data  
-Testing set to ensure that model doesn't overfit to training and validation data and works properly in production on real-world data  
+Validation set ensures that the model doesn't overfit to training data.  
+However, there is a possibility of overfitting the model to the validation set since we can look at the model's metrics on the validation set and adjust our hyperparameters, gradually making the model too specialized for the training and validation data.  
+Testing set ensures that the model doesn't overfit to training and validation data and works properly in production on real-world data. It's totally hidden from us before model deployment.   
 
 **What will fastai do if you don't provide a validation set?**  
 

@@ -11,6 +11,7 @@ Finally, we begin our look into productionization of models (chapter 2 of the bo
 **Can we always use a random sample for a validation set? Why or why not?**  
 
 It's not always the best idea b/c you might make changes to your model and want to measure *just* the model's improvement. Keeping the same validation set ensures you that your model was the reason behind the improvement in metrics, whereas a random sample does not.   
+In addition, a random sample for a validation set doesn't always make sense. In time-series datasets where the task is to predict future data points, it's not very helpful to test your model on a validation set when it's trained on data points before *and after* the validation set. In that case, you'd always want to use the last few data points as the validation set.  
 
 **What is overfitting? Provide an example.**  
 
