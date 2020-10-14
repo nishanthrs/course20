@@ -10,37 +10,37 @@ We also discuss how AI projects can fail, and techniques for avoiding failure.
 
 (If you're not sure of the answer to a question, try watching the next lesson and then coming back to this one, or read the first chapter of the book.)
 
-1. Do you need these for deep learning?
+**Do you need these for deep learning?**  
 
-   - Lots of math T / F: False
-   - Lots of data T / F: False
-   - Lots of expensive computers T / F: False
-   - A PhD T / F: False
+   - Lots of math T / F: False  
+   - Lots of data T / F: False  
+   - Lots of expensive computers T / F: False  
+   - A PhD T / F: False  
    
-1. Name five areas where deep learning is now the best in the world.
+**Name five areas where deep learning is now the best in the world.**  
 
-Natural language processing (e.g. sentiment analysis)
+Natural language processing (e.g. sentiment analysis)  
 Trading stocks (in the short term)  
-Computer vision  (e.g. ImageNet)
-Content recommendations  (e.g. FB ads)  
-Playing games (e.g. AlphaGo)
+Computer vision  (e.g. ImageNet)  
+Content recommendations  (e.g. FB ads)    
+Playing games (e.g. AlphaGo)  
 
-1. What was the name of the first device that was based on the principle of the artificial neuron?
+**What was the name of the first device that was based on the principle of the artificial neuron?**  
 
-Perceptron (mark I)
+Perceptron (mark I)  
 
-1. Based on the book of the same name, what are the requirements for parallel distributed processing (PDP)?
+**Based on the book of the same name, what are the requirements for parallel distributed processing (PDP)?**  
 
-Multiple processing units -> activation -> output function -> connectivity -> propagation -> activation -> learning rule -> env
+Multiple processing units -> activation -> output function -> connectivity -> propagation -> activation -> learning rule -> env  
 
-1. What were the two theoretical misunderstandings that held back the field of neural networks?
+**What were the two theoretical misunderstandings that held back the field of neural networks?**  
 
-Perceptrons' lack of ability to model XOR logic, but these can be resolved with multiple hidden layers
-Believed that only two hidden layers was enough to model any mathematical function (more layers were needed, but this was infeasible back then anyways due to lack of data and hardware constraints)
+Perceptrons' lack of ability to model XOR logic, but these can be resolved with multiple hidden layers  
+Believed that only two hidden layers was enough to model any mathematical function (more layers were needed, but this was infeasible back then anyways due to lack of data and hardware constraints)  
 
-1. What is a GPU?
+**What is a GPU?**  
 
-Device/chip (graphics processing unit) that can perform many different computations in parallel
+Device/chip (graphics processing unit) that can perform many different computations in parallel  
 
 1. Open a notebook and execute a cell containing: `1+1`. What happens?
 1. Follow through each cell of the stripped version of the notebook for this chapter. Before executing each cell, guess what will happen.
@@ -49,49 +49,49 @@ Device/chip (graphics processing unit) that can perform many different computati
 
 Normal computer programs are simply input -> function/model -> output. However, computers are stupid and we have to specify each step involved in the function/model used in recognizing images. There are many criteria used in image recognition due to the immense variance of images, and it's impossible to explicitly specify, in detail, each of these rules in recognizing images. It's also impossible for us to specify robust enough rules.
 
-1. What did Samuel mean by "weight assignment"?
+**What did Samuel mean by "weight assignment"?**  
 
-If we have weights or parameters whereas the permutations of values of each parameter = permutations of performing a task (e.g. playing a game), then we can slowly adjust these weights/params using a learning process. This learning process uses the expected/correct label and loss function to adjust the weights in such a way that the model gradually gets better at performing that task with each training example.
+If we have weights or parameters whereas the permutations of values of each parameter = permutations of performing a task (e.g. playing a game), then we can slowly adjust these weights/params using a learning process. This learning process uses the expected/correct label and loss function to adjust the weights in such a way that the model gradually gets better at performing that task with each training example.  
 
-1. What term do we normally use in deep learning for what Samuel called "weights"?
+**What term do we normally use in deep learning for what Samuel called "weights"?**  
 
-Parameters
+Parameters  
 
-1. Draw a picture that summarizes Samuel's view of a machine learning model.
+**Draw a picture that summarizes Samuel's view of a machine learning model.**  
 
-Inputs and Parameters -> Model -> Prediction and Label -> Loss Function and Calculation -> Update Parameters (repeat for another data point/epoch)
+Inputs and Parameters -> Model -> Prediction and Label -> Loss Function and Calculation -> Update Parameters (repeat for another data point/epoch)  
 
-1. Why is it hard to understand why a deep learning model makes a particular prediction?
+**Why is it hard to understand why a deep learning model makes a particular prediction?**  
 
 Neural networks hard to interpret b/c it's hard to tell which input features it uses to output predictions  
 There is no neat mapping b/w a neural network's weights/parameters and an input feature  
 Furthermore, two neural networks with the same architecture can have different params and still output the exact same results  
 
-1. What is the name of the theorem that shows that a neural network can solve any mathematical problem to any level of accuracy?
+**What is the name of the theorem that shows that a neural network can solve any mathematical problem to any level of accuracy?**  
 
-Universal approximation theorem
+Universal approximation theorem  
 
-1. What do you need in order to train a model?
+**What do you need in order to train a model?**  
 
-Lots of diverse data, representative of real-world data (same features, similar variance in each feature, etc)
+Lots of diverse data, representative of real-world data (same features, similar variance in each feature, etc)  
 
-1. How could a feedback loop impact the rollout of a predictive policing model?
+**How could a feedback loop impact the rollout of a predictive policing model?**  
 
 Model initially trained on arrests in poor neighborhoods with mostly minorities -> police use this same model to make arrests -> police continue to update this model with these new arrests -> reinforces model with biases inherent in both past AND current arrests, making law enforcement extremely targeted towards minorities  
 
-1. Do we always have to use 224×224-pixel images with the cat recognition model?
+**Do we always have to use 224×224-pixel images with the cat recognition model?**  
 
-Yes, each pixel = input feature that is fed into model (all training examples in dataset must have same dimensions)
+Yes, each pixel = input feature that is fed into model (all training examples in dataset must have same dimensions)  
 
-1. What is the difference between classification and regression?
+**What is the difference between classification and regression?**  
 
 Classification predicts discrete labels, regression predicts continuous labels (diff algos required for each kind of task)  
 
-1. What is a validation set? What is a test set? Why do we need them?
+**What is a validation set? What is a test set? Why do we need them?**  
 
 Validation set to ensure that model doesn't overfit to training data  
 Testing set to ensure that model doesn't overfit to training and validation data and works properly in production on real-world data  
 
-1. What will fastai do if you don't provide a validation set?
+**What will fastai do if you don't provide a validation set?**  
 
 Don't know, banish me to the depths of hell? All I know is that we should always have a validation set to prevent overfitting (k-fold cross validation is even better since it increases our chances of identifying if our model has overfitted or not)  
