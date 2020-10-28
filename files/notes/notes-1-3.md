@@ -59,7 +59,7 @@ To ensure that these models are rolled out in the real-world reliably while miti
 
 1. How is a grayscale image represented on a computer? How about a color image?  
 
-Grayscale images are represented as 2D matrices of numbers, each number representing the color of the pixel. Color images are represented as 3D matrices of numbers, each number representing the red or green or blue color value of the pixel (in a RGB image).   
+Grayscale images are represented as 2D matrices of numbers, each number ([0,255]) representing the color of the pixel. Color images are represented as 3D matrices of numbers, each number representing the red or green or blue color value ([0,255]) of the pixel (in a RGB image).   
 
 1. How are the files and folders in the `MNIST_SAMPLE` dataset structured? Why?  
 
@@ -75,21 +75,32 @@ double_nums = [num*2 for num in nums]
 
 1. What is a "rank-3 tensor"?
 1. What is the difference between tensor rank and shape? How do you get the rank from the shape?
-1. What are RMSE and L1 norm?
+1. What are RMSE and L1 norm?  
+
+Loss functions that measure the "distance" b/w two pieces of data:  
+```l1_norm = (a3 - predicted_a3).abs().mean()```  
+```rmse = ((a3 - predicted_a3)**2).mean().sqrt()```  
+
 1. How can you apply a calculation on thousands of numbers at once, many thousands of times faster than a Python loop?  
 
 Vectorization, multiprocessing, list comprehension (not thousands of times faster)  
 
 1. Create a 3×3 tensor or array containing the numbers from 1 to 9. Double it. Select the bottom-right four numbers.
-1. What is broadcasting?
+1. What is broadcasting?  
+
+Broadcasting is Pytorch's ability to perform operations on two tensors of different dimensions by expanding the tensor with smaller rank to match the dimensions of the tensor with larger rank. For example, if you're subtracting x of shape (1000, 28, 28) and y of shape (28,28), Pytorch will automatically expand y to (1000, 28, 28) by "creating" 1000 copies of the original 28x28 tensor to create the third dimension. Broadcasting is awesome b/c it doesn't *actually create 1000 copies* in the above example. In fact, it doesn't allocate *any* additional memory when expanding y, making the tensor computation run super efficiently.  
+```
+# validation_set_of_3s: (1000, 28, 28)
+# mean_3s: (28, 28)
+dist_b/w_validation_and_mean_3s = validation_set_of_3s - mean_3s
+# dist_b/w_validation_and_mean_3s: (1000, 28, 28)
+```  
+
 1. Are metrics generally calculated using the training set, or the validation set? Why?  
 
-The model's metrics are generally calculated using the validation set. Since metrics indicate performance, it's not helpful to measure metrics based on the training set since the model's already been trained on the training set and is expected to perform well on it. The main question we're trying to answer when collecting a model's metrics is how well it performs on real data.  
+The model's metrics are generally calculated using the validation set. Since metrics indicate performance, it's not helpful to measure metrics based on the training set since the model's already been trained on the training set and is expected to perform well on it. The main question we're trying to answer when collecting a model's metrics is how well it performs on real data. Otherwise, we're just going to overfit on the training data, making the model more suspectible to failure on real-world data.  
 
 1. What is SGD?  
-
-
-
 1. Why does SGD use mini-batches?
 1. What are the seven steps in SGD for machine learning?
 1. How do we initialize the weights in a model?  
@@ -98,7 +109,7 @@ No clear or best way of doing it; random initialization usually works best.
 
 1. What is "loss"?
 
-Loss is calculated via a function that calculates the distance b/w a predicted and expected label. This is then used to adjust the weights for the goal of reducing the loss as much as possible in the gradient descent algorithm.  
+Loss is calculated via a function that calculates the distance b/w a predicted and expected label (e.g. mean squared Euclidean distance, RMSE, mean absolute difference). This is then used to adjust the weights for the goal of reducing the network's loss as much as possible in the gradient descent algorithm.  
 
 1. Why can't we always use a high learning rate?
 1. What is a "gradient"?
