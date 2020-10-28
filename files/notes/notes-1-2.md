@@ -96,15 +96,26 @@ Features with high cardinality (many possible values); often found in recommenda
 
 **What's a key downside of directly using a deep learning model for recommendation systems?**  
 
-
+Deep learning models learn correlation, not causation. They have excellent pattern recognition skills, but that also means that they will only tell a customer what they would like rather than what would actually be helpful to them in its recommendations. This is because the model is trained on labels like clicks and product similarity; there isn't a single great label for helpfulness.   
 
 **What are the steps of the Drivetrain Approach?**  
 
-
+Define Objective -> Define Actions to Take -> Collect Data -> Create and Tune Model  
+Ex. Google:  
+1. What objective/problem is the user trying to achieve/solve?  
+The customer wants the most relevant web pages to their query to find out more information on the subject of the query.  
+2. What actions can Google take to achieve this objective in the most optimal way?    
+Google can control the search index by adding or removing web pages/links from it. They can also produce a ranking of these search results in order of relevancy to the query.  
+3. What data can be collected?  
+In addition to building the search index of web pages/links, Google can also collect additional info about each web page like which pages it links to, the author/source of the page, etc. to improve the search rankings.  
+4. Finally, Google can focus on the predictive model and fancy algorithms to rank results (e.g. PageRank). The previous steps are important in collecting the right data to achieve/solve the customer's objective/problem.  
 
 **How do the steps of the Drivetrain Approach map to a recommendation system?**  
 
-
+1. Objective: Drive additional sales of products by suggesting interesting recommendations that the customer would buy and not have found on their own.  
+2. Actions: Rank recommendations for each purchased product of the customer.  
+3. Data: All other products in the catalog, its features like category, seller, what other buyers of the product have also bought  
+4. Model: Deep learning models like deep fully connected neural networks. Conduct tests with multiple models and A/B testing so you can evalute if and which model is actually performing its objective: more sales.  
 
 **Create an image recognition model using data you curate, and deploy it on the web.**  
 
