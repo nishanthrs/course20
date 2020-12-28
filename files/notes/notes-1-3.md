@@ -129,21 +129,24 @@ SGD is an algorithm that performs a variant of gradient descent (stochastic grad
 
 **Why does SGD use mini-batches?**  
 
+SGD uses mini-batches as a compromise b/w speed and accuracy in weight updates. Normal gradient descent calculates the predictions and losses for the entire training set first and then updates the weights. However, this requires a lot of computation and memory. If we were to update weights after each training EXAMPLE, then we wouldn't get very accurate or significant weight updates. Thus, SGD divides the training set into mini-batches and for each mini-batch, calculates the gradient and updates the parameters.    
+
 
 **What are the seven steps in SGD for machine learning?**  
 
 1. Initialize the neural network's weights at random.  
-2. Begin training the model. Perform the forward step (dot products of input features, weights, and biases and non-linear activation functions) for a batch of training examples.  
-3. Calculate the loss using whatever loss function is specified.  
-4. Perform gradient descent by performing backpropagation.  
-    Calculate the gradient:
-    ```
-    weights = torch.randn(num_rows, num_cols, requires_grad=True)
-    ...
-    weights_grad = weights.grad
-    ```
-    Update the weights via `new_weights = weights += (learning_rate * weights_grad)`.  
-5. Repeat for each batch of training examples in the training set.  
+2. Begin training the model. Perform the forward step (dot products and matrix multiplications of input features, weights, and biases and non-linear activation functions) for a batch of training examples to get the predictions.   
+3. Calculate the loss using whatever loss function is specified (inputs = predicted and actual label, outputs = single num).  
+4. Perform gradient descent by performing backpropagation. First part of this is calculating the gradient:
+```
+weights = torch.randn(num_rows, num_cols, requires_grad=True)
+...
+loss.backward()
+weights_grad = weights.grad
+```
+5. Update the weights via `new_weights = weights + (learning_rate * weights_grad)`. Zero out the gradients via `weights.grad.zero_()`.  
+6. Repeat for each batch of training examples in the training set.  
+7. Repeat for each epoch of the training set.  
 
 **How do we initialize the weights in a model?**  
 
